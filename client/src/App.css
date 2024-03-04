@@ -1,0 +1,277 @@
+body{
+  background-color: #279BEF;
+
+}
+h1{
+  color: white;
+}
+.button{
+  padding: 10px 30px 10px 30px;
+    font-size: medium;
+    font-weight: bold;
+    color: white;
+    background-color: #0a5c97;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 3px 1px 5px white;
+    height: 50px;
+}
+.button:hover{
+  padding: 10px 30px 10px 30px;
+  font-size: medium;
+  font-weight: bold;
+  color: white;
+  background-color: #1f2325;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 3px 1px 5px white;
+  height: 50px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+   
+}
+
+.login{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex: 1;
+    margin: auto;
+    
+}
+
+.form {
+
+  width: 80%;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #e6e4e4;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.form h3 {
+  font-weight: bolder;
+}
+
+.userid {
+  padding-top: 20px;
+  display: flex;
+  font-weight: 400;
+
+}
+
+.useridbox {
+  border-radius: 10px;
+  width: 80%;
+  height: 35px;
+  background-color: #bbb7b7;
+  border: 1px solid #bbb7b7;
+}
+
+
+
+.button1 {
+  border: 1px solid #279BEF;
+  width: 150px;
+  height: 40px;
+  background-color: #279BEF;
+  border-radius: 15px;
+  margin-top: -30px;
+  font-weight: bold;
+  color: white;
+  margin: 20px;
+}
+
+.button1:hover {
+  background-color: #e6e4e4;
+  color: #279BEF;
+  border: 3px solid #279BEF;
+}
+
+.loginbutton {
+  text-decoration: none;
+  color: #e6e4e4;
+  font-weight: 700;
+}
+
+.loginbutton:hover {
+  color: #000000;
+}
+
+.button2 {
+  border: 3px solid #279BEF;
+  width: 150px;
+  height: 40px;
+  background-color: #e6e4e4;
+  border-radius: 15px;
+  margin-left: 10px;
+}
+
+.signupbutton {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 700;
+
+}
+
+.button2:hover {
+  background-color: #279BEF;
+  color: #e6e4e4;
+}
+
+.signupbutton:hover {
+  color: #FFFFFF;
+  background-color: #279BEF;
+}
+
+
+.ortext {
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+.clickhere {
+  color: #279BEF
+}
+
+.forgotpassword {
+  font-size: smaller;
+  padding-top: 20px;
+  font-weight: lighter;
+}
+
+.useridbox {
+  padding-left: 10px;
+}
+
+.passwordtext {
+  display: flex;
+  font-weight: 400;
+  padding-top: 10px;
+
+}
+
+.passwordbox {
+  border-radius: 10px;
+  width: 81%;
+  height: 35px;
+  background-color: #bbb7b7;
+  border: 1px solid #bbb7b7;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  }
+.password{
+  border-radius: 10px;
+  width: 100%;
+}
+.passwordtextbox {
+  border: none;
+  flex: 1;
+  margin: 10px;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+}
+.eye-btn{
+  background-color: #bbb7b7;
+  border: 1px solid #bbb7b7;
+  border-radius: 10px;
+}
+.search{
+  margin: 20px;
+}
+
+.searchBox{
+  background-color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  width: 80%;
+  padding: 10px;
+  height: 30px;
+}
+
+.loginButton{
+  padding: 10px 30px 10px 30px;
+  font-size: larger;
+  font-weight: bold;
+  color: white;
+  background-color: #279BEF;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 3px 1px 5px white;
+  
+}
+.link{
+  color: white;
+  text-decoration:none;
+  font-weight: bold;
+}
+.link1 {
+  color: #279BEF;
+  text-decoration: none;
+  font-weight: bold;
+}
+.all-ques{
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: 20px;  
+}
+.question{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 20px;
+  width: 80%;
+  color: #FFFFFF;
+}
+.ans-button{
+  width: auto;
+  font-size: small;
+}
+.topics{
+  width: 100%;
+  height: 100%;
+  margin-top:10%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.blogs{
+  display: flex;
+  flex-direction: row ;
+  flex-wrap: wrap;
+  flex: 1;
+  flex-grow: 1;
+  /* justify-content: space-around;   */
+  margin: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+.footer{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #034f85;
+  height: auto;
+}
