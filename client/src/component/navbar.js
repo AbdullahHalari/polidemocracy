@@ -212,8 +212,11 @@ function NavBar() {
               </Menu>
             </Box>
           ) : (
-            <button className="logOutButton button1" onClick={logOut}>
-              LogOut
+            <button
+              className="logOutButton button"
+              onClick={() => navigate("/login")}
+            >
+              LogIn
             </button>
           )}
         </Toolbar>

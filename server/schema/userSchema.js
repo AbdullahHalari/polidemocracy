@@ -45,5 +45,5 @@ userSchema.methods.generateAuthToken = async function(){
     }
 }
 
-const User = mongoose.model('polidemocracy',userSchema);
+const User = mongoose.model('polidemocracyusers',userSchema);
 module.exports = User
