@@ -5,6 +5,8 @@ import { faEyeSlash, faEye } from "@fortawesome/free-regular-svg-icons";
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
   const [passwordType, setPasswordType] = useState("password");
@@ -16,6 +18,28 @@ const SignUp = () => {
     }
     setPasswordType("password");
   };
+  async function signup(e) {
+    e.preventDefault();
+    try {
+      if (password == confirmPassword) {
+        const response = await fetch("http://localhost:5000/api/signup", {
+          method: "POST",
+          headers: {
+            "content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, username, password }),
+        });
+        if (response.ok) {
+          navigate("/", { replace: true });
+        } else {
+          console.log(response.body);
+          console.log("not registered");
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <React.Fragment>
       <section>
@@ -43,7 +67,7 @@ const SignUp = () => {
                 type="text"
                 id="student-id"
                 name="student-id"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
               />
               <label className="passwordtext" htmlFor="password">
                 Password:
@@ -82,7 +106,7 @@ const SignUp = () => {
                     type={passwordType}
                     // id="password"
                     name="password"
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                 </div>
                 {/* <div className="eye-btn"> */}

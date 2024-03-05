@@ -16,6 +16,27 @@ const Login = () => {
     }
     setPasswordType("password");
   };
+  async function login(e) {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5000/api/login", {
+        method: "POST",
+        headers: {
+          "content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ email, password }),
+      });
+      if (response.ok) {
+        navigate("/Home", { replace: true });
+        console.log(response.json());
+      } else {
+        console.log("not registered");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     // <section>
     <div className="container">
@@ -63,7 +84,7 @@ const Login = () => {
           <br />
           {/* <p class="error">{error}</p> */}
           <br />
-          <button className="button1">Login</button>
+          <button className="button1"onClick={login}>Login</button>
           <button className="button1" onClick={()=>navigate("/signup")}>
            Sign UP
           </button>

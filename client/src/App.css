@@ -257,7 +257,11 @@ h1{
   /* justify-content: space-around;   */
   margin: 20px;
 }
-
+.logOutButton {
+  text-decoration: none;
+  color: #e6e4e4;
+  font-weight: 700;
+}
 
 
 

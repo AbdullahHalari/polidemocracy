@@ -1,4 +1,4 @@
-import * as React from "react";
+import React,{useEffect,useState} from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const pages = ["Home", "Topics", "Blogs","News"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Account", "Dashboard"];
 function NavBar() {
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -37,6 +37,51 @@ function NavBar() {
     setAnchorElUser(null);
   };
   const [login,setLogin] = React.useState(false);
+  const getToken = async () => {
+    try {
+      // Make a request to the server to get the token from cookies
+      const response = await fetch("http://localhost:5000/api/checkToken", {
+        method: "GET",
+        // headers: {
+        //   "content-Type": "application/json",
+        // },
+        credentials: "include",
+        // withCredentials: true, // Send cookies with the request
+      });
+      if (response.ok) {
+        const data = await response.json();
+        const token = data.token;
+        console.log("Login successful. Token:", token);
+        setLogin(true);
+      }
+      // If the request is successful, set isLoggedIn to true
+    } catch (error) {
+      // If there's an error or the token doesn't exist, set isLoggedIn to false
+      setLogin(false);
+      console.error("Login failed");
+    }
+  };
+  const logOut = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5000/api/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+
+      if (response.ok) {
+        console.log("user logout");
+        setLogin(false);
+      } else {
+        console.error("Logout failed");
+      }
+    } catch (error) {
+      console.error("Logout failed", error);
+    }
+  };
+  useEffect(() => {
+    getToken();
+  }, []);
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -161,10 +206,15 @@ function NavBar() {
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 ))}
+                <button className="logOutButton button1" onClick={logOut}>
+                  LogOut
+                </button>
               </Menu>
             </Box>
           ) : (
-            <button className="loginButton" onClick={()=>navigate("/login")}>LogIn</button>
+            <button className="logOutButton button1" onClick={logOut}>
+              LogOut
+            </button>
           )}
         </Toolbar>
       </Container>
