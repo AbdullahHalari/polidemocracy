@@ -5,24 +5,24 @@ import NavBar from "../component/navbar";
 function News() {
  const [news, setNews] = useState([]);
 
-//  useEffect(() => {
-//    const fetchData = async () => {
+ useEffect(() => {
+   const fetchData = async () => {
      
-//      try {
-//        const response = await fetch(url);
-//        if (!response.ok) {
-//          throw new Error("Network response was not ok");
-//        }
-//        const data = await response.json();
-//        setNews(data.articles);
-//        console.log(data.articles);
-//      } catch (error) {
-//        console.error("Error fetching data:", error);
-//      }
-//    };
+     try {
+       const response = await fetch("http://localhost:5000/api/newsData");
+       if (!response.ok) {
+         throw new Error("Network response was not ok");
+       }
+       const data = await response.json();
+       setNews(data.articles);
+       console.log(data.articles);
+     } catch (error) {
+       console.error("Error fetching data:", error);
+     }
+   };
 
-//    fetchData();
-//  }, []);
+   fetchData();
+ }, []);
   return (
     <div>
       <NavBar />
@@ -33,8 +33,14 @@ function News() {
   </Grid>
   </Grid> */}
       <div className="blogs">
-        <div></div>
-        <div>
+        
+          {
+            news.map((item)=>(
+              <CardUI {...item}/>
+            ))
+          }
+      
+        {/* <div>
           <CardUI />
         </div>
         <div>
@@ -51,7 +57,7 @@ function News() {
         </div>
         <div>
           <CardUI />
-        </div>
+        </div> */}
       </div>
     </div>
   );

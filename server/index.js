@@ -5,10 +5,12 @@ const cors = require("cors");
 require("dotenv").config();
 const connectDB = require("./mongodb")
 dotenv.config({ path: "./config.env" });
-
+const convert = require("xml-js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
+const { DOMParser } = require("xmldom");
+
 app.use(
   cors({
     origin: "http://localhost:3000", // Replace with your client's URL
@@ -99,4 +101,35 @@ app.get("/api/checkToken", (req, res) => {
 app.post("/api/logout", (req, res) => {
   res.clearCookie("token");
   res.json({ message: "logout successfully" });
+});
+
+app.get("/api/newsData",async(req,res) =>{
+  try {
+       const response = await fetch(process.env.newsUrl);
+       if (!response.ok) {
+         throw new Error("Network response was not ok");
+       }
+       const data = await response.json();
+       res.json(data)
+       console.log(data);
+     } catch (error) {
+       console.error("Error fetching data:", error);
+     }
+
+})
+
+app.get("/api/blogsData", async (req, res) => {
+    try {
+      const response = await fetch(process.env.blogUrl);
+      if (!response.ok) {
+        throw new Error(`Error fetching data: ${response.statusText}`);
+      }
+      const xmlData = await response.text();
+      res.set("Content-Type", "text/xml");
+      res.send(xmlData);
+      // console.log(xmlData)
+    } catch (error) {
+      console.error("Error fetching Twingly data:", error);
+      res.status(500).json({ error: "Failed to fetch Twingly data." });
+    }
 });
