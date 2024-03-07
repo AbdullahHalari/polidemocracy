@@ -10,6 +10,7 @@ import Footer from './component/footer';
 import Topics from './pages/topics';
 import Blogs from './pages/blogs';
 import News from './pages/news';
+import Answer from './pages/answer';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/Topics" element={<Topics />} />
         <Route path="/Blogs" element={<Blogs />} />
         <Route path="/News" element={<News />} />
+        <Route path="/Answers" element={<Answer />} />
       </Routes>
       <Footer />
     </BrowserRouter>
